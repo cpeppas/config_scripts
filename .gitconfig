@@ -1,0 +1,37 @@
+[user]
+	name = Christos Peppas
+	email = peppas.chris@gmail.com
+[color]
+	status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[push]
+	default = simple
+[alias]
+	a = add .
+	cm = commit -m
+	ch = checkout
+	cl = clone	
+	log-nice = log --oneline --graph --decorate
+    log-nice2 = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit    
+	prune = git remote prune origin
+	dlb = "branch -r | awk '{print $1}' | egrep -v -f /dev/fd/0 <(git branch -vv | grep origin) | awk '{print $1}' | xargs git branch -d"
+    status = auto
+	branch = auto
+	interactive = auto
+	diff = auto
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[core]
+	excludesfile = /Users/cpeppas/.gitignore_global
+	editor = code --wait
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
